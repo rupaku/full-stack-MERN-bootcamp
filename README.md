@@ -25,3 +25,29 @@
 # npm start
 
 # mongoose documentation : https://mongoosejs.com/docs/guide.html
+
+# Middleware theory:
+
+# http://expressjs.com/en/guide/writing-middleware.html
+
+# bosy-parser , cookie-parser, cors
+
+# signup
+
+<!-- http://localhost:8000/api/signup //POST
+{
+	"name":"Rupa",
+	"lastname":"Kumari",
+	"email":"a@rupa.com",
+	"password":"12345"
+} -->
+
+# http://localhost:8000/api/signin //POST
+
+# body:
+
+<!--
+{
+	"email":"a@rupda.comg",
+	"password":"12345"
+} -->
