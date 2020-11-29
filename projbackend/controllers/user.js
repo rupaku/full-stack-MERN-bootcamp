@@ -51,7 +51,7 @@ exports.updateUser = (req, res) => {
       if (err) {
         return res.status(400).jsson({
           error: "You are not authorized to update this user",
-        })
+        })  
       }
       user.salt = undefined
       user.encry_password = undefined
