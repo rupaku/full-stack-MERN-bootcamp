@@ -1,12 +1,14 @@
-import React from "react";
+import React from "react"
+import Menu from "./Menu"
 
 const Base = ({
   title = "My Title",
   description = "My desription",
   className = "bg-dark text-white p-4",
-  children
+  children,
 }) => (
   <div>
+    <Menu />
     <div className="container-fluid">
       <div className="jumbotron bg-dark text-white text-center">
         <h2 className="display-4">{title}</h2>
@@ -26,6 +28,6 @@ const Base = ({
       </div>
     </footer>
   </div>
-);
+)
 
-export default Base;
+export default Base
