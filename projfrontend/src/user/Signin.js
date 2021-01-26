@@ -1,19 +1,19 @@
 import React, { useState } from "react"
 import Base from "../core/Base"
-import { Link } from "react-router-dom"
+import { Link, Redirect } from "react-router-dom"
+
 import { signin, authenticate, isAuthenticated } from "../auth/helper"
 
 const Signin = () => {
   const [values, setValues] = useState({
-    email: "",
-    password: "",
+    email: "abcd@gmail.com",
+    password: "abcd",
     error: "",
     loading: false,
     didRedirect: false,
   })
 
   const { email, password, error, loading, didRedirect } = values
-
   const { user } = isAuthenticated()
 
   const handleChange = (name) => (event) => {
@@ -36,28 +36,28 @@ const Signin = () => {
           })
         }
       })
-      .catch(console.log("Signin request failed"))
+      .catch(console.log("signin request failed"))
   }
 
   const performRedirect = () => {
     //TODO: do a redirect here
     if (didRedirect) {
       if (user && user.role === 1) {
-        return <p>redirect to Admin</p>
+        return <Redirect to="/admin/dashboard" />
       } else {
-        return <p>redirect to user dashboard</p>
+        return <Redirect to="/user/dashboard" />
       }
     }
-
     if (isAuthenticated()) {
       return <Redirect to="/" />
     }
   }
-  const loadingsMessage = () => {
+
+  const loadingMessage = () => {
     return (
       loading && (
         <div className="alert alert-info">
-          <h2>Loading ...</h2>
+          <h2>Loading...</h2>
         </div>
       )
     )
@@ -102,10 +102,7 @@ const Signin = () => {
                 type="password"
               />
             </div>
-            <button
-              onClick={onsubmit}
-              className="form-control btn btn-success btn-block"
-            >
+            <button onClick={onSubmit} className="btn btn-success btn-block">
               Submit
             </button>
           </form>
@@ -116,7 +113,7 @@ const Signin = () => {
 
   return (
     <Base title="Sign In page" description="A page for user to sign in!">
-      {loadingsMessage()}
+      {loadingMessage()}
       {errorMessage()}
       {signInForm()}
       {performRedirect()}
